@@ -11,8 +11,10 @@ jobs:
       # needed to annotate the files in a pull request with comments
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4 
-      - name: Access secret
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Access Secrets and Vars
         run: |
           echo "Secret: ${{ secrets.CONNECTION_STRING }}"
           echo "Var: ${{vars.TEST }}"
