@@ -12,16 +12,15 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4 
-      - name: Access secres
+      - name: Access secret
         run: |
-          echo "Secret: ${secrets.CONNECTION_STRING }"
-          echo "Var: ${vars.TEST }"
+          echo "Secret: ${{ secrets.CONNECTION_STRING }}"
+          echo "Var: ${{vars.TEST }}"
       - name: Write messages to the log
         run: |
           echo "::debug::This is a debug message"
           echo "::warning file=app.js,line=1,col=51,endColumn=52::Missing semicolon"
           echo "::error file=app.js,line=2,col=1,endColumn=7::Error in app.js"
-          
       - id: sets-a-secret
         name: Generate, mask, and output a secret
         run: |
