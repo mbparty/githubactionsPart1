@@ -1,8 +1,12 @@
 name: FromScratch
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
+    paths:
+      - 'src/**'
+
 jobs:
   hello-actions:
     runs-on: ubuntu-latest
