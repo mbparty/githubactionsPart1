@@ -6,7 +6,7 @@ jobs:
   main:
     runs-on: ubuntu-latest
     permissions:
-      # needed for the checkout action
+      # needed for the checkout action 
       contents: read
       # needed to annotate the files in a pull request with comments
       pull-requests: write
