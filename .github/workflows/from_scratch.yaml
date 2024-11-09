@@ -1,32 +1,37 @@
 name: FromScratch
 
 on:
-    push:
-        branches: [ main ]
+  push:
+    branches: [main]
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        permissions: 
-            contents: write
+  hello-actions:
+    runs-on: ubuntu-latest
+    permissions: 
+      contents: write
+    steps:
+      - name: CheckOut Code
+        uses: actions/checkout@v4
 
-        steps:
-            - name: CheckOut
-              uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13' 
+          cache: 'pip'
 
-            - name: Setup Python
-              uses: actions/setup-python@v5
-              with:
-                python-version: '3.13' 
-                cache: 'pip'
-            - name: Install Dependencies
-              run: pip install -r requirements.txt
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
 
-            - name: Run Main Script
-              run: python src/script.py
+      - name: Run Main Script
+        run: python src/script.py
 
-            - name: Commit & Push changes
-              uses: stefanzweifel/git-auto-commit-action@v5     
-              with:
-                commit_message: Git AutoCommit 
-                file_pattern: '*.txt'
+      - name: Run ls
+        run: |
+          echo $(date)
+          ls -la
+
+      - name: Commit & Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5     
+        with:
+          commit_message: Git AutoCommit 
+          file_pattern: '*.txt'
               
