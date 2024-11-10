@@ -6,8 +6,20 @@ on:
 jobs:
   Another:
     runs-on: ubuntu-latest
+    env:
+      ENVIDIA: "ENVIDIA env vars"
+      MY_NAME: "Mona The Octocat"
     permissions:
       contents: write
     steps:
       - name: "First Step"
-        run: "echo hola mundo"
+        id: first
+        run: |
+          echo "ENTORNO=TEST" >> "$GITHUB_OUTPUT"
+          echo "::debug::Set ENTORNO variable"
+
+      - name: "Read ENV"
+        run: |
+          echo "ENV: ${{steps.first.outputs.ENTORNO}}"
+          echo "ENVIDIA: $ENVIDIA"
+          echo "MY_NAME: ::add-mask::$MY_NAME"
