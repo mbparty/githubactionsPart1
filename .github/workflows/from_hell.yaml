@@ -15,11 +15,19 @@ jobs:
       - name: "First Step"
         id: first
         run: |
-          echo "ENTORNO=TEST" >> "$GITHUB_OUTPUT"
+          echo "ENTORNO=TEST" >> $GITHUB_OUTPUT
           echo "::debug::Set ENTORNO variable"
 
       - name: "Read ENV"
         run: |
           echo "ENV: ${{steps.first.outputs.ENTORNO}}"
           echo "ENVIDIA: $ENVIDIA"
-          echo "MY_NAME: ::add-mask::$MY_NAME"
+          echo "::add-mask::$MY_NAME"
+
+      - name: Set environment variable
+        run: echo "MY_ENV_VAR=myValue" >> $GITHUB_ENV
+  
+      - name: Use environment variable
+        run: |
+          echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
+        
