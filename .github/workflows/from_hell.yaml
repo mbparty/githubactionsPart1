@@ -1,0 +1,13 @@
+name: From Hell
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Another:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: "First Step"
+        run: "echo hola mundo"
