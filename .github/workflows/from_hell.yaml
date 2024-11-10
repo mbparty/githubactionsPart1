@@ -9,6 +9,7 @@ jobs:
     outputs:
       output1: ${{ steps.first.outputs.ENTORNO }}
       output2: ${{ steps.second.outputs.SECOND }}    
+      output_json: ${{ steps.step_curl.outputs.JSON_RESPONSE_OTHER }}    
     env:
       ENVIDIA: "ENVIDIA env vars"
       MY_NAME: "Mona The Octocat"
@@ -61,4 +62,5 @@ jobs:
       - env:
           OUTPUT1: ${{needs.Another.outputs.output1}} 
           OUTPUT2: ${{needs.Another.outputs.output2}} 
-        run:  echo "$OUTPUT1 $OUTPUT2"
+          OUTPUT3: ${{needs.Another.outputs.output_json}} 
+        run:  echo "$OUTPUT1 $OUTPUT2 $OUTPUT3"
