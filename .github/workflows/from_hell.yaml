@@ -31,3 +31,15 @@ jobs:
         run: |
           echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
         
+      - name: Set the value in JSON_RESPONSE
+        id: step_curl
+        run: |
+          {
+            echo 'JSON_RESPONSE<<EOF'
+            curl https://jsonplaceholder.typicode.com/todos/1
+            echo EOF
+          } >> "$GITHUB_ENV"          
+
+      - name: Use environment variable
+        run: |
+          echo "The value of JSON_RESPONSE is $JSON_RESPONSE"          
