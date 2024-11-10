@@ -38,7 +38,7 @@ jobs:
               echo "JSON_RESPONSE<<EOF"
               curl https://jsonplaceholder.typicode.com/todos/1
               echo "EOF"
-          } >> $GITHUB_ENV         
+          } >> $GITHUB_OUTPUT
 
       - name: Use environment variable
         run: |
