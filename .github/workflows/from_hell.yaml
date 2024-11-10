@@ -36,10 +36,10 @@ jobs:
         shell: bash
         run: |
           {
-              echo "JSON_RESPONSE<<EOF"
-              curl https://jsonplaceholder.typicode.com/todos/1
-              echo "EOF"
-          } >> $GITHUB_OUTPUT
+            echo 'JSON_RESPONSE<<EOF'
+            curl https://example.com
+            echo EOF
+          } >> "$GITHUB_ENV"
 
       - name: Use environment variable
         run: |
