@@ -35,10 +35,10 @@ jobs:
         id: step_curl
         run: |
           {
-            echo "JSON_RESPONSE<<EOF"
-            curl https://jsonplaceholder.typicode.com/todos/1
-            echo "EOF"
-          } >> "$GITHUB_ENV"          
+              echo "JSON_RESPONSE<<EOF"
+              curl https://jsonplaceholder.typicode.com/todos/1
+              echo "EOF"
+          } >> $GITHUB_ENV         
 
       - name: Use environment variable
         run: |
