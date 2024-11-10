@@ -33,6 +33,7 @@ jobs:
         
       - name: Set the value in JSON_RESPONSE
         id: step_curl
+        shell: bash
         run: |
           {
               echo "JSON_RESPONSE<<EOF"
