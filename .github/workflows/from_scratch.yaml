@@ -78,6 +78,12 @@ jobs:
     steps:
       - name: Docker Step
         uses: docker://alpine:3.8  
-        
+      
+  cancelled-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: cancelled-action
+        if: ${{cancelled()}}
+        uses: "echo job: ${{github.job}} Cancelled"      
 
          
