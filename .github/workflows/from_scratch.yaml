@@ -84,6 +84,6 @@ jobs:
     steps:
       - name: cancelled-action
         if: ${{cancelled()}}
-        uses: "echo job: ${{github.job}} Cancelled"      
+        uses: "echo job Cancelled"      
 
          
