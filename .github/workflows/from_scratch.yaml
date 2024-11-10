@@ -18,15 +18,8 @@ jobs:
       
       - name: Get git Reference
         run: |
-          "echo Pointing: ${{ github.ref }}"
+          "echo Pointing"
           
-  deploy:
-    if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Depploy
-        run: echo "Deploying branch ${{ github.ref }}"
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -49,6 +42,15 @@ jobs:
         with:
           commit_message: Git AutoCommit 
           file_pattern: '*.txt'
+
+  deploy:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Depploy
+        run: echo "Deploying branch ${{ github.ref }}"
+
+
 
   second-action:
     runs-on: ubuntu-latest
