@@ -40,7 +40,12 @@ jobs:
             curl https://jsonplaceholder.typicode.com/todos/1 | jq 
             echo EOF
           } >> "$GITHUB_ENV"
-
+          {
+            echo 'JSON_RESPONSE_OTHER<<EOF'
+            curl https://jsonplaceholder.typicode.com/todos/1 | jq 
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
       - name: Use environment variable
         run: |
-          echo "The value of JSON_RESPONSE is $JSON_RESPONSE"          
+          echo "The value of JSON_RESPONSE is $JSON_RESPONSE"
+          echo "The value of JSON_RESPONSE is ${{steps.step_curl.outputs.JSON_RESPONSE_OTHER}}"  
